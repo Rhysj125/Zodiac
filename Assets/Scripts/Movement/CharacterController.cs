@@ -9,6 +9,7 @@ namespace Assets.Scripts.Movement
         public float MovementSpeed = 5.0f;
         [Range(.5f, 10.0f)]
         public float JumpForce = 5.0f;
+        [Range(.1f, .9f)]
         public float InAirMovementMulitplier = 0.2f;
 
         // Components
@@ -18,7 +19,6 @@ namespace Assets.Scripts.Movement
 
         // States
         private bool _isJumping = false;
-        private bool _isGrounded = true;
 
         // Movement Vectors
         private float _horizontalMovement = 0f;
@@ -32,23 +32,9 @@ namespace Assets.Scripts.Movement
         }
 
         // Use for inputs
-        void Update()
+        public void Update()
         {
-            _isGrounded = Mathf.Abs(_rigidBody.velocity.y) < 0.001;
-
-            _horizontalMovement = Input.GetAxisRaw("Horizontal");
-
-            if(_horizontalMovement > 0)
-            {
-                // Deal with collider too left x offset = -0.12, right x offset = .12
-                _boxCollider.offset = new Vector2(0.12f, 0);
-                _spriteRenderer.flipX = true;
-            }
-            else if(_horizontalMovement < 0)
-            {
-                _boxCollider.offset = new Vector2(-0.12f, 0);
-                _spriteRenderer.flipX = false;
-            }
+            MoveHorizontally(Input.GetAxisRaw("Horizontal"));
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -56,26 +42,44 @@ namespace Assets.Scripts.Movement
             }
         }
 
-        // Use mostly for actual movement
-        void FixedUpdate()
+        private void MoveHorizontally(float movementDirection)
         {
-            if (!_isGrounded)
+            if (movementDirection > 0)
             {
-                transform.position += new Vector3(_jumpingHozitonalVector + (_horizontalMovement * InAirMovementMulitplier), 0) * Time.deltaTime * MovementSpeed;
+                // Having to reposition the collider due to the sprite not being quite centre.
+                _boxCollider.offset = new Vector2(0.12f, 0);
+                _spriteRenderer.flipX = true;
+            }
+            else if (movementDirection < 0)
+            {
+                _boxCollider.offset = new Vector2(-0.12f, 0);
+                _spriteRenderer.flipX = false;
+            }
+
+            if (!IsGrounded)
+            {
+                transform.position += new Vector3(_jumpingHozitonalVector + (movementDirection * InAirMovementMulitplier), 0) * Time.deltaTime * MovementSpeed;
             }
             else
             {
-                transform.position += new Vector3(_horizontalMovement, 0) * Time.deltaTime * MovementSpeed;
+                transform.position += new Vector3(movementDirection, 0) * Time.deltaTime * MovementSpeed;
             }
-            
 
-            if (_isJumping && _isGrounded)
+            _horizontalMovement = movementDirection;
+        }
+
+        // Use mostly for rigid body force movement
+        public void FixedUpdate()
+        {          
+            if (_isJumping && IsGrounded)
             {
-                _isGrounded = false;
                 _isJumping = false;
                 _rigidBody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
                 _jumpingHozitonalVector = _horizontalMovement;
             }
         }
+
+        private bool IsGrounded 
+            => Mathf.Abs(_rigidBody.velocity.y) < 0.001;
     }
 }
