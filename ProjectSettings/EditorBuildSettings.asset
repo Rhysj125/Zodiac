@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainRoom.unity
     guid: 131a8269c2d581e4194bc8e6b4443819
+  - enabled: 1
+    path: Assets/Scenes/PiscesRoom.unity
+    guid: 7f515770fbda7884cb7e9839bdcdae10
   m_configObjects: {}
