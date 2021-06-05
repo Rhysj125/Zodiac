@@ -16,6 +16,7 @@ namespace Assets.Scripts.Movement
         private Rigidbody2D _rigidBody;
         private SpriteRenderer _spriteRenderer;
         private BoxCollider2D _boxCollider;
+        private Animator _animator;
 
         // States
         private bool _isJumping = false;
@@ -29,6 +30,7 @@ namespace Assets.Scripts.Movement
             _rigidBody = GetComponent<Rigidbody2D>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _boxCollider = GetComponent<BoxCollider2D>();
+            _animator = GetComponent<Animator>();
         }
 
         // Use for inputs
@@ -44,15 +46,17 @@ namespace Assets.Scripts.Movement
 
         private void MoveHorizontally(float movementDirection)
         {
+            _animator.SetBool("IsMoving", IsMoving);
+
             if (movementDirection > 0)
             {
                 // Having to reposition the collider due to the sprite not being quite centre.
-                _boxCollider.offset = new Vector2(0.12f, 0);
+                _boxCollider.offset = new Vector2(0.09f, -0.11f);
                 _spriteRenderer.flipX = true;
             }
             else if (movementDirection < 0)
             {
-                _boxCollider.offset = new Vector2(-0.12f, 0);
+                _boxCollider.offset = new Vector2(-0.09f, -0.11f);
                 _spriteRenderer.flipX = false;
             }
 
@@ -81,5 +85,9 @@ namespace Assets.Scripts.Movement
 
         private bool IsGrounded 
             => Mathf.Abs(_rigidBody.velocity.y) < 0.001;
+
+        // Seems really janky, but oh well
+        private bool IsMoving
+            => _horizontalMovement != 0 || _rigidBody.velocity.y != 0;
     }
 }
