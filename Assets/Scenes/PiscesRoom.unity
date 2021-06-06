@@ -550,7 +550,7 @@ PrefabInstance:
     - target: {fileID: 8728963747488166038, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
       propertyPath: PauseMenu
       value: 
-      objectReference: {fileID: 1809328278}
+      objectReference: {fileID: 2011156569}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
 --- !u!1 &678118957
@@ -1312,11 +1312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
---- !u!1 &1809328278 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5669095055103825919, guid: 5d64b6a68ec371340912f80eb6b46ea7, type: 3}
-  m_PrefabInstance: {fileID: 892003948}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1969366175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,6 +1421,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2011156569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7634071899332207247, guid: 5d64b6a68ec371340912f80eb6b46ea7, type: 3}
+  m_PrefabInstance: {fileID: 892003948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2077304201
 GameObject:
   m_ObjectHideFlags: 0
