@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Movement
 {
@@ -44,6 +45,11 @@ namespace Assets.Scripts.Movement
             {
                 PauseMenu.SetActive(!PauseMenu.activeSelf);
                 Time.timeScale = PauseMenu.activeSelf ? 0 : 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                SceneManager.LoadScene("PiscesRoom");
             }
         }
 

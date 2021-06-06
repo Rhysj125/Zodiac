@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Water
 {
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Water
             if (other.tag == "Player")
             {
                 Destroy(other.gameObject);
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }
