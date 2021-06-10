@@ -85,13 +85,13 @@ namespace Assets.Scripts.Movement
             if (_horizontalMovement > 0)
             {
                 // Having to reposition the collider due to the sprite not being quite centre.
-                _boxCollider.offset = new Vector2(0.09f, -0.11f);
+                _boxCollider.offset = new Vector2(0.06f, -0.05f);
                 _spriteRenderer.flipX = true;
                 normalizedHorizontalSpeed = 1;
             }
             else if (_horizontalMovement < 0)
             {
-                _boxCollider.offset = new Vector2(-0.09f, -0.11f);
+                _boxCollider.offset = new Vector2(-0.06f, -0.05f);
                 _spriteRenderer.flipX = false;
                 normalizedHorizontalSpeed = -1;
             }
