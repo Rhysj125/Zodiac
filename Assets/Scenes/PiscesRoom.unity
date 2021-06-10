@@ -257,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240334448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2582914, y: 0.81743, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 972663126}
@@ -272,10 +272,10 @@ AudioSource:
   m_GameObject: {fileID: 240334448}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 171817750667378603, guid: 2af38eccbaa5e094eb3522d90c20304b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9951662d2065b194cb473a5656834c6b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.269
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -475,6 +475,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4143450912742953180, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: JumpForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143450912742953180, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: PauseMenu
+      value: 
+      objectReference: {fileID: 2011156569}
+    - target: {fileID: 4143450912742953182, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143450912742953182, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143450912742953182, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.09
+      objectReference: {fileID: 0}
     - target: {fileID: 7508822142443954345, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
       propertyPath: m_Name
       value: Player
@@ -926,7 +946,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.9902587
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -950,7 +970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972663123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1.68, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1652042468}
