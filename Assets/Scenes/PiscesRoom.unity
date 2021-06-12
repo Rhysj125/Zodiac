@@ -802,6 +802,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScrollSpeed: 0.5
+--- !u!1 &1022757626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4132381851736825982, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+  m_PrefabInstance: {fileID: 4132381851113081809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1065411954
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,13 +912,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065411954}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.05, y: -3.1, z: 11}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.28, y: -3, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 972663126}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!95 &1065411958
 Animator:
   serializedVersion: 3
@@ -945,10 +950,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -966,6 +971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 249d208b93ec91e4bbdb5acb2df7c95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1022757626}
 --- !u!1 &1413562178
 GameObject:
   m_ObjectHideFlags: 0
