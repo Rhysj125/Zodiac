@@ -4,14 +4,20 @@ namespace Assets.Scripts.Enemies
 {
     public class PiscesMovementScript : MonoBehaviour
     {
+        // Settings
+        [Range(1, 10)]
+        public float AttackCooldown = 10f;
+
         // External components
         public GameObject Player;
 
         // Internal components
         private Rigidbody2D _rigidBody;
 
+        // fields
         private bool _attacking = false;
         private float _attackStartingYPosition = -99999;
+        private float _nextTimeToAttack = 0f;
 
         private void Awake()
         {
@@ -22,7 +28,7 @@ namespace Assets.Scripts.Enemies
         {
             var rng = Random.value;
 
-            if (!_attacking && rng > 0.95)
+            if (Time.time >= _nextTimeToAttack && rng > 0.95)
             {
                 _attacking = true;
                 InitiateJumpOverAttack();
@@ -57,6 +63,8 @@ namespace Assets.Scripts.Enemies
             gameObject.transform.position = new Vector3(playerXPosition, gameObject.transform.position.y);
 
             _rigidBody.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+
+            _nextTimeToAttack = Time.time + AttackCooldown;
         }
     }
 }
