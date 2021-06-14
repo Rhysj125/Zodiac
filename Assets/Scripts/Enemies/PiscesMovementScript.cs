@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Settings;
+using UnityEngine;
 
 namespace Assets.Scripts.Enemies
 {
@@ -48,6 +49,14 @@ namespace Assets.Scripts.Enemies
                 _rigidBody.mass = 0;
                 _rigidBody.gravityScale = 0;
                 _rigidBody.velocity = new Vector2(-0.9f, 0);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "Player")
+            {
+                other.GetComponent<IPlayer>().TakeDamage();
             }
         }
 

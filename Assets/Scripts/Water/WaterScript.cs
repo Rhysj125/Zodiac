@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using Assets.Scripts.Settings;
+using UnityEngine;
 
 namespace Assets.Scripts.Water
 {
@@ -18,8 +18,7 @@ namespace Assets.Scripts.Water
         {
             if (other.tag == "Player")
             {
-                Destroy(other.gameObject);
-                SceneManager.LoadScene("MainMenu");
+                other.GetComponent<IPlayer>().Kill();
             }
         }
     }
