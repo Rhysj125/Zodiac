@@ -1923,6 +1923,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6492648412507021818, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: DeathSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: fc0b0a5f686341d43b6b9e7ec4bb8cf7, type: 3}
+    - target: {fileID: 6492648412507021818, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: DamagedSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: f508734785ee2df4e8a71b7911b6f151, type: 3}
+    - target: {fileID: 6492648412507021818, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
+      propertyPath: SoundEffectsMixerGroup
+      value: 
+      objectReference: {fileID: 693151723553673159, guid: 2af38eccbaa5e094eb3522d90c20304b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71465171bbec1f54bb93745cdfd09daf, type: 3}
 --- !u!1001 &7809427280337477777
