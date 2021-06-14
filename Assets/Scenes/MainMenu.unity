@@ -1414,6 +1414,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4294428635586566516, guid: e69dbf10e19fbd94c84ac2353f909876, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSoundEffectsVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 4966249844434898743, guid: e69dbf10e19fbd94c84ac2353f909876, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -17,11 +17,12 @@ namespace Assets.Scripts.Enemies
         // fields
         private bool _attacking = false;
         private float _attackStartingYPosition = -99999;
-        private float _nextTimeToAttack = 0f;
+        private float _nextTimeToAttack;
 
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody2D>();
+            _nextTimeToAttack = Time.time + AttackCooldown;
         }
 
         private void FixedUpdate()
