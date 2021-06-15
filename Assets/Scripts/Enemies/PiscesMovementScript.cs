@@ -69,8 +69,9 @@ namespace Assets.Scripts.Enemies
             _attackStartingYPosition = gameObject.transform.position.y - 1;
 
             var playerXPosition = Player.transform.position.x;
+            var playerYPosition = Player.transform.position.y;
 
-            gameObject.transform.position = new Vector3(playerXPosition, gameObject.transform.position.y);
+            gameObject.transform.position = new Vector3(playerXPosition, playerYPosition);
 
             _rigidBody.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
 
