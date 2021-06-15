@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Settings;
+using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
@@ -110,10 +111,15 @@ namespace Assets.Scripts.Movement
         // Use mostly for rigid body force movement
         public void FixedUpdate()
         {
-            MoveHorizontally();
-            if (_isJumping && IsGrounded)
+            if (Player.PlayerInstance.IsAlive)
             {
-                HandleJump();
+                _animator.SetBool("IsJumping", !IsGrounded);
+
+                MoveHorizontally();
+                if (_isJumping && IsGrounded)
+                {
+                    HandleJump();
+                }
             }
         }
 

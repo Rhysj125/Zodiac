@@ -20,6 +20,7 @@ namespace Assets.Scripts.Settings
         public int Health { get; private set; }
         [Range(0f, 2f)]
         public float InvincibilityTime = 1f;
+        public bool IsAlive => Health > 0;
 
         // Fields
         private float _invincibleTill = 0f;
