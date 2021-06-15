@@ -10,7 +10,7 @@ namespace Assets.Scripts.Enemies
         [Range(1, 10)]
         public float AttackCooldown = 10f;
         [Range(1,10)]
-        public float SwimSpeed = 2f;
+        public float SwimSpeed = 3f;
         public int Direction = -1;
 
         // External components
@@ -21,6 +21,7 @@ namespace Assets.Scripts.Enemies
 
         // fields
         private bool _attacking = false;
+        private bool _makingPass = false;
         private float _nextTimeToAttack;
 
         private void Awake()
@@ -33,9 +34,13 @@ namespace Assets.Scripts.Enemies
         {
             var rng = Random.value;
 
-            if (Time.time >= _nextTimeToAttack && rng > 0.95 && !_attacking)
+            if (Time.time >= _nextTimeToAttack && !_makingPass && !_attacking)
             {
                 _attacking = true;
+                StartCoroutine(InitiateJumpUpAttack());
+            }else if (!_makingPass && !_attacking)
+            {
+                _makingPass = true;
                 StartCoroutine(SwimAcross());
             }
 
@@ -60,19 +65,16 @@ namespace Assets.Scripts.Enemies
             _rigidBody.mass = 0;
             _rigidBody.gravityScale = 0;
             _rigidBody.velocity = new Vector2(Direction*SwimSpeed, 0);
+            gameObject.transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
 
             var yPosition = GetComponentInParent<Camera>().transform.position.y - 5;
             var xPosition = 13;
 
-            gameObject.transform.position = new Vector3(xPosition, yPosition);
+            gameObject.transform.position = new Vector3(xPosition, yPosition, gameObject.transform.position.z);
 
-            yield return new WaitUntil(() => {
-                Debug.Log($"Current X: {gameObject.transform.position.x}");
-                Debug.Log($"Target X: {xPosition}");
-                return gameObject.transform.position.x <= xPosition * -1;
-            });
+            yield return new WaitUntil(() => gameObject.transform.position.x <= xPosition * -1);
 
-            _attacking = false;
+            _makingPass = false;
         }
 
         private IEnumerator InitiateJumpUpAttack()
@@ -84,7 +86,7 @@ namespace Assets.Scripts.Enemies
             var playerXPosition = Player.transform.position.x;
             var playerYPosition = Player.transform.position.y;
 
-            gameObject.transform.position = new Vector3(playerXPosition, playerYPosition - 13);
+            gameObject.transform.position = new Vector3(playerXPosition, playerYPosition - 13, gameObject.transform.position.z);
             gameObject.transform.rotation = Quaternion.AngleAxis(-90, Vector3.forward);
 
             _rigidBody.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
@@ -93,13 +95,9 @@ namespace Assets.Scripts.Enemies
 
             _nextTimeToAttack = Time.time + AttackCooldown;
 
-            yield return new WaitUntil(() => {
-                Debug.Log("Checking pos");
-                Debug.Log(startingPosition);
-                Debug.Log(gameObject.transform.position.y);
-                return startingPosition > gameObject.transform.position.y;
-                }
-            );
+            yield return new WaitUntil(() => startingPosition > gameObject.transform.position.y);
+
+            yield return new WaitForSeconds(1);
 
             _attacking = false;
         }
